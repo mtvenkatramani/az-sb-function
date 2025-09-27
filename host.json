@@ -1,16 +1,18 @@
 {
     "version": "2.0",
     "extensions": {
-        "blobs": {
-            "maxDegreeOfParallelism": 4,
-            "poisonBlobThreshold": 1
+        "serviceBus": {
+          "messageHandlerOptions": {
+            "autoComplete": true,
+            "maxConcurrentCalls": 16,
+            "maxAutoRenewDuration": "00:05:00"
+          },
+          "prefetchCount": 0,
+          "transportType": "amqpTcp"
         }
-    },
-    "managedDependency": {
-      "Enabled": true
-    },
+      },
      "extensionBundle": {
-          "id": "Microsoft.Azure.Functions.ExtensionBundle.Preview",
-          "version": "[4.*, 5.0.0)"
+          "id": "Microsoft.Azure.Functions.ExtensionBundle",
+          "version": "[4.0.0, 5.0.0)"
       }
   }
