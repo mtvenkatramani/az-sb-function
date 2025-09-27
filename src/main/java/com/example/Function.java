@@ -2,6 +2,7 @@ package com.example;
 
 import com.microsoft.azure.functions.annotation.*;
 import com.microsoft.azure.functions.*;
+import java.util.logging.Logger;
 
 public class Function {
     @FunctionName("ProcessServiceBusTopicMessage")
