@@ -1,23 +1,18 @@
-# Stage 1: Build the Java Function App
-FROM mcr.microsoft.com/azure-functions/java:4-java8-build AS builder
-
-WORKDIR /src
-
-# Copy the Maven project files
-COPY pom.xml .
-COPY host.json .
-
-# Copy the function source code
-COPY src ./src
-
-# Package the function app
-RUN mvn clean package
-
-# Stage 2: Create the final runtime image
+# Use official Azure Functions Java 11 base image
 FROM mcr.microsoft.com/azure-functions/java:4-java8
 
-ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
-    AzureFunctionsJobHost__Logging__Console__IsEnabled=true
+# Set working directory
+WORKDIR /home/site/wwwroot
 
-# Copy the packaged function app from the builder stage
-COPY --from=builder /src/target/azure-functions/az-sb-function /home/site/wwwroot
+# Copy the built JAR from the target folder
+COPY target/azure-servicebus-function-1.0-SNAPSHOT.jar ./azure-servicebus-function.jar
+
+# Set the entry point to the Azure Functions host
+ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
+    FUNCTIONS_WORKER_RUNTIME=java
+
+# Expose port 80
+EXPOSE 80
+
+# Start Azure Functions host
+CMD ["java", "-jar", "azure-servicebus-function.jar"]
