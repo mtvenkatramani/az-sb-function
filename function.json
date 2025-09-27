@@ -1,0 +1,14 @@
+{
+    "scriptFile": "../build/classes/java/main/com/example/Function.class",
+    "bindings": [
+      {
+        "type": "serviceBusTrigger",
+        "direction": "in",
+        "name": "message",
+        "topicName": "your-topic-name",
+        "subscriptionName": "your-subscription-name",
+        "connection": "AzureWebJobsServiceBus"
+      }
+    ]
+  }
+  
