@@ -7,6 +7,8 @@ WORKDIR /home/site/wwwroot
 # Copy the built JAR from the target folder
 COPY target/azure-servicebus-function-1.0-SNAPSHOT.jar ./azure-servicebus-function.jar
 
+RUN (ls -al)
+
 # Set the entry point to the Azure Functions host
 ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
     FUNCTIONS_WORKER_RUNTIME=java
