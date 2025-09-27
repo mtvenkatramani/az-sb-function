@@ -6,7 +6,7 @@ ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
 
 WORKDIR /home/site/wwwroot
 
-RUN (ls -al)
-
 # Copy the packaged function app from the builder stage
 COPY target/azure-functions/az-sb-function/* /home/site/wwwroot
+
+RUN (ls -al)
