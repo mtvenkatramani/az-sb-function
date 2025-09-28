@@ -6,6 +6,7 @@ import java.util.logging.Logger;
 
 
 public class Function {
+    /*
     @FunctionName("ProcessServiceBusTopicMessage")
     public void run(
         @ServiceBusTopicTrigger(
@@ -27,7 +28,8 @@ public class Function {
             logger.severe("Error processing message: " + ex.getMessage());
             throw ex; // re-throw to abandon message
         }
-    }
+    } */
+
     /** Blob trigger */
     @FunctionName("BlobTriggerFunction")
     public void run(
@@ -42,7 +44,8 @@ public class Function {
         logger.info("Blob trigger function processed blob: " + blobName);
         logger.info("Size: " + content.length + " bytes");
     }
-    /** Event Hubs Trigger */
+
+    /** Event Hubs Trigger
     @FunctionName("EventHubTriggerFunction")
     public void run(
         @EventHubTrigger(name = "messages",
@@ -55,5 +58,5 @@ public class Function {
         for (String message : messages) {
             logger.info("Event Hub message: " + message);
         }
-    }
+    } */
 }
