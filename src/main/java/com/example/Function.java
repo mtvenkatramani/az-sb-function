@@ -42,7 +42,7 @@ public class Function {
         logger.info("Blob trigger function processed blob: " + blobName);
         logger.info("Size: " + content.length + " bytes");
     }
-    /** Event Hubs */
+    /** Event Hubs Trigger */
     @FunctionName("EventHubTriggerFunction")
     public void run(
         @EventHubTrigger(name = "messages",
